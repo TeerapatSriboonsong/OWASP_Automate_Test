@@ -2,7 +2,7 @@
 #### <span style="color:red">**_Java_**</span> 17.0.6 
 #### <span style="color:red">**_Junit_**</span> 4.13.2
 #### <span style="color:red">**_Selenium_**</span> 4.7.2
-#### <span style="color:red">**_log4j2_**</span> 1.2.17
+#### <span style="color:red">**_log4j-core_**</span> 2.19.0
 #### <span style="color:red">**_ChromeDriver_**</span>
 #### <span style="color:red">**_Maven_**</span>
 

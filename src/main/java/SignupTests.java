@@ -151,6 +151,7 @@ public class SignupTests{
         log.info("EXPECTED : prompt shows Please select a security question");
         try {
             element.sendKeys(Keys.ESCAPE);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Please select a security question')]")));
             driver.findElement(By.xpath("//*[contains(text(),'Please select a security question')]"));
 
             log.info("PASS");
