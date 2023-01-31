@@ -3,6 +3,7 @@
 #### <span style="color:red">**_Junit_**</span> 4.13.2
 #### <span style="color:red">**_Selenium_**</span> 4.7.2
 #### <span style="color:red">**_log4j-core_**</span> 2.19.0
+#### <span style="color:red">**_log4j-api_**</span> 2.19.0
 #### <span style="color:red">**_ChromeDriver_**</span>
 #### <span style="color:red">**_Maven_**</span>
 

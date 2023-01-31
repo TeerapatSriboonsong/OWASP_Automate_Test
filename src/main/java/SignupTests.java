@@ -1,5 +1,9 @@
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;   //There's a stark difference between the below logging.log4j (log4j2) and this log4j, I only left this line in to show that the 2 can cause some confusion.
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.config.Configurator;
 import org.apache.log4j.PropertyConfigurator;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
@@ -10,21 +14,21 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import static java.lang.Thread.sleep;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class SignupTests{
 
-    private ChromeDriver driver = new ChromeDriver();
-    private WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    private static Logger log = Logger.getLogger(SignupTests.class);
+    private final ChromeDriver driver = new ChromeDriver();
+    private final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    private static final Logger log = LogManager.getLogger(SignupTests.class);
     @BeforeAll
     public void setupClass() {
-        String log4jConfPath = "./src/main/properties/log4j.properties";
+        Configurator.setLevel(LogManager.getLogger(SignupTests.class).getName(), Level.INFO);
+
+        String log4jConfPath = "./src/main/properties/log4j2.properties";
         PropertyConfigurator.configure(log4jConfPath);
 
         //Pls change this to match your own server's ip or port number if you're running your code from a container.
@@ -49,12 +53,14 @@ public class SignupTests{
     public void testEmptyEmail() {
         log.info("TEST CASE : Empty email input");
         fillEmail("");
+        log.log(Level.ALL, "As expected");
+        log.error("ERROR");
 
-        log.info("EXPECTED : prompt shows Please provide an email address");
+        log.log(Level.INFO,"EXPECTED : prompt shows Please provide an email address");
         try {
             driver.findElement(By.xpath("//*[contains(text(),'Please provide an email address')]"));
 
-            log.info("PASS");
+            log.log(Level.INFO,"PASS");
         }catch(Exception e){
             log.info("FAIL");
             log.error(e);
@@ -227,7 +233,7 @@ public class SignupTests{
     }
 
     @Test
-    public void testSelectedSecurityQuestion() throws Exception{
+    public void testSelectedSecurityQuestion() {
         log.info("TEST CASE : Selected security question");
 
         log.info("EXPECTED : Able to select the first option in the dropdown box");
@@ -328,7 +334,6 @@ public class SignupTests{
     public String generateRandomEmail() {
         final String lexicon = "ABCDEFGHIJKLMNOPQRSTUVWXYZ12345674890";
         final java.util.Random rand = new java.util.Random();
-        final Set<String> identifiers = new HashSet<String>();
 
         StringBuilder builder = new StringBuilder();
 
@@ -336,9 +341,6 @@ public class SignupTests{
             int length = rand.nextInt(5)+5;
             for(int i = 0; i < length; i++) {
                 builder.append(lexicon.charAt(rand.nextInt(lexicon.length())));
-            }
-            if(identifiers.contains(builder.toString())) {
-                builder = new StringBuilder();
             }
         }
         return builder.toString().concat("@gmail.com");
