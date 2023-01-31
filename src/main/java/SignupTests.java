@@ -1,5 +1,3 @@
-
-//import org.apache.log4j.Logger;   //There's a stark difference between the below logging.log4j (log4j2) and this log4j, I only left this line in to show that the 2 can cause some confusion.
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -53,14 +51,12 @@ public class SignupTests{
     public void testEmptyEmail() {
         log.info("TEST CASE : Empty email input");
         fillEmail("");
-        log.log(Level.ALL, "As expected");
-        log.error("ERROR");
 
         log.log(Level.INFO,"EXPECTED : prompt shows Please provide an email address");
         try {
             driver.findElement(By.xpath("//*[contains(text(),'Please provide an email address')]"));
 
-            log.log(Level.INFO,"PASS");
+            log.info("PASS");
         }catch(Exception e){
             log.info("FAIL");
             log.error(e);
