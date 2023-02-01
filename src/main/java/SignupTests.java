@@ -338,6 +338,39 @@ public class SignupTests{
         }
         return builder.toString().concat("@gmail.com");
     }
+
+    public void runTests() throws Exception {
+        setupClass();
+
+        testEmptyEmail();
+        refreshPage();
+        testInvalidEmail();
+        refreshPage();
+        testEmptyPassword();
+        refreshPage();
+        testInvalidPassword();
+        refreshPage();
+        testEmptyRepeatPassword();
+        refreshPage();
+        testUnmatchedRepeatPassword();
+        refreshPage();
+        testUnselectedSecurityQuestion();
+        refreshPage();
+        testEmptySecurityQuestion();
+        refreshPage();
+
+        testCorrectEmail();
+        refreshPage();
+        testCorrectPassword();
+        refreshPage();
+        testCorrectRepeatPassword();
+        refreshPage();
+        testSelectedSecurityQuestion();
+        refreshPage();
+        testFilledSecurityQuestion();
+        refreshPage();
+        testCreateUser();
+    }
 }
 
 //            //test login
