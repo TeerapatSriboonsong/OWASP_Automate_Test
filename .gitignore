@@ -2,6 +2,8 @@ src/test
 logs
 .idea
 target
+out
+META-INF
 
 # For MacOS #
 .DS_Store
