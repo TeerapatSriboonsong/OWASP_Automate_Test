@@ -2,7 +2,6 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.config.Configurator;
-import org.apache.log4j.PropertyConfigurator;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -24,10 +23,8 @@ public class SignupTests{
     private static final Logger log = LogManager.getLogger(SignupTests.class);
     @BeforeAll
     public void setupClass() {
-        Configurator.setLevel(LogManager.getLogger(SignupTests.class).getName(), Level.INFO);
 
-        String log4jConfPath = "./src/main/properties/log4j2.properties";
-        PropertyConfigurator.configure(log4jConfPath);
+        Configurator.setLevel(LogManager.getLogger(SignupTests.class).getName(), Level.INFO);
 
         //Pls change this to match your own server's ip or port number if you're running your code from a container.
         driver.get("http://localhost:3000");    //default as docker port
