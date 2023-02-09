@@ -27,14 +27,14 @@ public class SignupTests{
         Configurator.setLevel(LogManager.getLogger(SignupTests.class).getName(), Level.INFO);
 
         //Pls change this to match your own server's ip or port number if you're running your code from a container.
-        driver.get("http://localhost:3000");    //default as docker port
+        driver.get("http://localhost:3000/#/register");    //default as docker port
 
         //Getting to the Register page
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@aria-label='Close Welcome Banner']")));
-        driver.findElement(By.xpath("//button[@aria-label='Close Welcome Banner']")).click();
-        driver.findElement(By.xpath("//button[@id='navbarAccount']")).click();
-        driver.findElement(By.xpath("//button[@routerLink='/login']")).click();
-        driver.findElement(By.xpath("//a[@routerlink='/register']")).click();
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@aria-label='Close Welcome Banner']")));
+//        driver.findElement(By.xpath("//button[@aria-label='Close Welcome Banner']")).click();
+//        driver.findElement(By.xpath("//button[@id='navbarAccount']")).click();
+//        driver.findElement(By.xpath("//button[@routerLink='/login']")).click();
+//        driver.findElement(By.xpath("//a[@routerlink='/register']")).click();
     }
 
     @AfterEach
@@ -60,6 +60,8 @@ public class SignupTests{
         }
     }
 
+
+    
     @Test
     public void testInvalidEmail() {
         log.info("TEST CASE : Invalid email input");
