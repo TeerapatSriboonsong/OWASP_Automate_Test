@@ -18,6 +18,7 @@ import static java.lang.Thread.sleep;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class SignupTests{
 
+    //TODO: the docker container still can't access chromedriver from within, fix needed later.
     private final ChromeDriver driver = new ChromeDriver();
     private final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     private static final Logger log = LogManager.getLogger(SignupTests.class);

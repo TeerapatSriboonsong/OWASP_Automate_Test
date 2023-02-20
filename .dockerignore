@@ -1,0 +1,9 @@
+.idea
+META-INF
+out
+.git
+.gitignore
+.DS_Store
+README.md
+docker-compose.yaml
+build.log

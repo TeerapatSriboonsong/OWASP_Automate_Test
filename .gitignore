@@ -4,6 +4,7 @@ logs
 target
 out
 META-INF
+build.log
 
 # For MacOS #
 .DS_Store

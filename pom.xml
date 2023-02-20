@@ -66,9 +66,16 @@
             <version>5.9.2</version>
 <!--            <scope>test</scope>-->
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
+            <version>4.7.2</version>
+        </dependency>
     </dependencies>
 
     <build>
+        <defaultGoal>install</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -92,6 +99,7 @@
                 </executions>
             </plugin>
         </plugins>
+        <finalName>maven-docker</finalName>
     </build>
 
 </project>

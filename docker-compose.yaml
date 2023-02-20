@@ -1,0 +1,11 @@
+services:
+  juiceshop:
+    image: bkimminich/juice-shop
+    container_name: mavengocd-juiceshop
+    ports:
+      - 3000:3000
+
+  maven:
+    depends_on:
+      - juiceshop
+    build: .
